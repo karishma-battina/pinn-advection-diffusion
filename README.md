@@ -1,4 +1,4 @@
-# PINN Advection–Diffusion
+# PINN Advection–Diffusion using Julia
 
 **Physics-Informed Neural Network** implementation in Julia  
 Solving the 2D advection–diffusion equation for ocean pollutant transport  

@@ -89,10 +89,10 @@ bcs = [
 ]
 doms = [x ∈ Interval(0,X_max), y ∈ Interval(0,Y_max), t ∈ Interval(0,T_final)]
 chain = Lux.Chain(
-    Lux.Dense(3,256,Lux.tanh),
-    Lux.Dense(256,256,Lux.tanh), Lux.Dense(256,256,Lux.tanh), Lux.Dense(256,256,Lux.tanh),
-    Lux.Dense(256,256,Lux.tanh), Lux.Dense(256,256,Lux.tanh), Lux.Dense(256,256,Lux.tanh),
-    Lux.Dense(256,256,Lux.tanh), Lux.Dense(256,1)
+    Lux.Dense(3,128,Lux.tanh),
+    Lux.Dense(128,128,Lux.tanh), Lux.Dense(128,128,Lux.tanh), Lux.Dense(128,128,Lux.tanh),
+    Lux.Dense(128,128,Lux.tanh), Lux.Dense(128,128,Lux.tanh), Lux.Dense(128,128,Lux.tanh),
+    Lux.Dense(128,128,Lux.tanh), Lux.Dense(128,1)
 )
 
 # Loss definitions
@@ -132,7 +132,7 @@ cb_adam = (p,l) -> begin
     false
 end
 opt_adam = OptimizationOptimisers.Adam(0.006)
-time_ad = @belapsed(global res_ad = Optimization.solve(prob, $opt_adam, callback=cb_adam, maxiters=330))
+time_ad = @belapsed(global res_ad = Optimization.solve(prob, $opt_adam, callback=cb_adam, maxiters=6000))
 
 
 @printf("Final loss after Adam: %.4e\n", res_ad.objective)
